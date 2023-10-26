@@ -18,3 +18,7 @@ def chickens_index(request):
     return render(request, 'chickens/index.html', {
         'chickens': chickens
     })
+
+def chickens_detail(request, pk):
+    chicken = Chicken.objects.get(id=pk)
+    return render(request, 'chickens/detail.html', {'chicken': chicken})

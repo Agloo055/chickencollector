@@ -6,16 +6,18 @@
     
     {% for chicken in chickens %}
         <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{ chicken.name }}</h5>
-                <p>Breed: {{ chicken.breed }}</p>
-                <p>Description: {{ chicken.description }}</p>
-                {% if chicken.age > 0 %}
-                    <p>Age: {{ chicken.age }}</p>
-                {% else %}
-                    <p>Age: Chick</p>
-                {% endif %}
-            </div>
+            <a href="{% url 'detail' chicken.id %}" class="text-decoration-none">
+                <div class="card-body">
+                    <h5 class="card-title">{{ chicken.name }}</h5>
+                    <p>Breed: {{ chicken.breed }}</p>
+                    <p>Description: {{ chicken.description | linebreaks }}</p>
+                    {% if chicken.age > 0 %}
+                        <p>Age: {{ chicken.age }}</p>
+                    {% else %}
+                        <p>Age: Chick</p>
+                    {% endif %}
+                </div>
+            </a>
         </div>
     {% endfor %}
 {% endblock %}
