@@ -1,0 +1,12 @@
+{% extends 'chickens/base.html' %}
+{% block content %}
+    <h1>Add Chicken</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table class="table table-info">
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit!" class="btn btn-primary">
+    </form>
+{% endblock %}

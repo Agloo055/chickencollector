@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import CreateView
 from .models import Chicken
 
 # chickens = [
@@ -22,3 +23,9 @@ def chickens_index(request):
 def chickens_detail(request, pk):
     chicken = Chicken.objects.get(id=pk)
     return render(request, 'chickens/detail.html', {'chicken': chicken})
+
+
+# class based views
+class ChickenCreate(CreateView):
+    model = Chicken
+    fields = ['name', 'breed', 'description', 'age']

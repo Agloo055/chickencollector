@@ -11,14 +11,15 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Chicken Collector</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Chicken Collector</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarText">
                 <div class="navbar-nav">
-                    <a class="nav-link" href="/about">About</a>
-                    <a class="nav-link" href="/chickens">All Chickens</a>
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                    <a class="nav-link" href="{% url 'chickens_create' %}">Add a Chicken</a>
+                    <a class="nav-link" href="{% url 'index' %}">All Chickens</a>
                 </div>
             </div>
         </div>
