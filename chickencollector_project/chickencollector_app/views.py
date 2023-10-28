@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Chicken
 
 # chickens = [
@@ -29,3 +29,12 @@ def chickens_detail(request, pk):
 class ChickenCreate(CreateView):
     model = Chicken
     fields = ['name', 'breed', 'description', 'age']
+
+class ChickenUpdate(UpdateView):
+    model = Chicken
+
+    fields = ['breed', 'description', 'age']
+
+class ChickenDelete(DeleteView):
+    model = Chicken
+    success_url = '/chickens'

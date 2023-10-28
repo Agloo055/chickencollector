@@ -1,6 +1,11 @@
 {% extends 'chickens/base.html' %}
 {% block content %}
-    <h1>Add Chicken</h1>
+
+    {% if object %}
+        <h1>Edit <span class="text-primary">{{object.name}}</span></h1>
+    {% else %}
+        <h1>Add Chicken</h1>
+    {% endif %}
 
     <form action="" method="POST">
         {% csrf_token %}

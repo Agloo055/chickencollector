@@ -14,6 +14,10 @@
             <p>Age: Chick</p>
         {% endif %}
     </div>
+    <div class="card-footer">
+        <a href="{% url 'chickens_update' chicken.id %}" class="card-link">Edit</a>
+        <a href="{% url 'chickens_delete' chicken.id %}" class="card-link">Delete</a>
+    </div>
 </div>
 
 {% endblock %}
