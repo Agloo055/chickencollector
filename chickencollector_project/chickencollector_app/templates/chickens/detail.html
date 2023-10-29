@@ -3,21 +3,41 @@
 
 <h1>Chicken Details</h1>
 
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">{{ chicken.name }}</h5>
-        <p>Breed: {{ chicken.breed }}</p>
-        <p>Description: {{ chicken.description | linebreaks }}</p>
-        {% if chicken.age > 0 %}
-            <p>Age: {{ chicken.age }}</p>
-        {% else %}
-            <p>Age: Chick</p>
-        {% endif %}
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ chicken.name }}</h5>
+                <p>Breed: {{ chicken.breed }}</p>
+                <p>Description: {{ chicken.description | linebreaks }}</p>
+                {% if chicken.age > 0 %}
+                    <p>Age: {{ chicken.age }}</p>
+                {% else %}
+                    <p>Age: Chick</p>
+                {% endif %}
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'chickens_update' chicken.id %}" class="card-link">Edit</a>
+                <a href="{% url 'chickens_delete' chicken.id %}" class="card-link">Delete</a>
+            </div>
+        </div>
     </div>
-    <div class="card-footer">
-        <a href="{% url 'chickens_update' chicken.id %}" class="card-link">Edit</a>
-        <a href="{% url 'chickens_delete' chicken.id %}" class="card-link">Delete</a>
+    <div class="col-sm-6">
+        <table class="table table-striped">
+            <thead>
+                <tr><th>Date</th><th>Time of Day</th></tr>
+            </thead>
+            <tbody>
+                {% for laying in chicken.laying_set.all %}
+                    <tr>
+                        <td>{{laying.date}}</td>
+                        <td>{{laying.get_time_display}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
+
 
 {% endblock %}
