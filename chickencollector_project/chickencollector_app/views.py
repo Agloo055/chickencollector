@@ -47,6 +47,14 @@ def add_laying(request, pk):
     
     return redirect('detail', pk = pk)
 
+def assoc_snack(request, pk, snack_pk):
+    Chicken.objects.get(id=pk).snacks.add(snack_pk)
+    return redirect('detail', pk=pk)
+
+def assoc_delete(request, pk, snack_pk):
+    Chicken.objects.get(id=pk).snacks.remove(snack_pk)
+    return redirect('detail', pk=pk)
+
 # class based views
 class ChickenCreate(CreateView):
     model = Chicken

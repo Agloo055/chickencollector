@@ -58,6 +58,9 @@
                             A {{ snack.amount }} of {{ snack.name }}
                         </h4>
                     </div>
+                    <div class="card-footer">
+                        <a href="{% url 'assoc_delete' chicken.id snack.id %}">Remove</a>
+                    </div>
                 </div>
             {% endfor %}
         {% else %}
@@ -75,7 +78,7 @@
                         </h4>
                     </div>
                     <div class="card-footer">
-                        <form action="" method="POST">
+                        <form action="{% url 'assoc_snack' chicken.id snack.id %}" method="POST">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-primary">Add</button>
                         </form>
