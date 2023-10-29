@@ -5,14 +5,8 @@
     <div class="col-sm-6">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{ snack.name }}</h5>
-                <p>Breed: {{ snack.breed }}</p>
-                <p>Description: {{ snack.description | linebreaks }}</p>
-                {% if snack.age > 0 %}
-                    <p>Age: {{ snack.age }}</p>
-                {% else %}
-                    <p>Age: Chick</p>
-                {% endif %}
+                <h1 class="card-title">{{ snack.name }}</h1>
+                <p>Amount: {{ snack.amount }}</p>
             </div>
             <div class="card-footer">
                 <a href="{% url 'snacks_update' snack.id %}" class="card-link">Edit</a>

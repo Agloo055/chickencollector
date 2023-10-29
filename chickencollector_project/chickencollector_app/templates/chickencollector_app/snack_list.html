@@ -6,16 +6,10 @@
     
     {% for snack in snack_list %}
         <div class="card">
-            <a href="{% url 'detail' snack.id %}" class="text-decoration-none">
+            <a href="{% url 'snacks_detail' snack.id %}" class="text-decoration-none">
                 <div class="card-body">
                     <h5 class="card-title">{{ snack.name }}</h5>
-                    <p>Breed: {{ snack.breed }}</p>
-                    <p>Description: {{ snack.description | linebreaks }}</p>
-                    {% if snack.age > 0 %}
-                        <p>Age: {{ snack.age }}</p>
-                    {% else %}
-                        <p>Age: Chick</p>
-                    {% endif %}
+                    <p>Amount: {{ snack.amount }}</p>
                 </div>
             </a>
         </div>
