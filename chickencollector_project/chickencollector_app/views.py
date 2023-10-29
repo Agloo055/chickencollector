@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from django.views.generic import CreateView, UpdateView, DeleteView
-from .models import Chicken
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
+from .models import Chicken, Snack
 from .forms import LayingForm
 
 # chickens = [
@@ -53,3 +53,21 @@ class ChickenUpdate(UpdateView):
 class ChickenDelete(DeleteView):
     model = Chicken
     success_url = '/chickens'
+
+class SnackList(ListView):
+    model = Snack
+
+class SnackDetail(DetailView):
+    model = Snack
+
+class SnackCreate(CreateView):
+    model = Snack
+    fields = '__all__'
+
+class SnackUpdate(UpdateView):
+    model = Snack
+    fields = ['name', 'amount']
+
+class SnackDelete(DeleteView):
+    model = Snack
+    success_url = '/snacks'

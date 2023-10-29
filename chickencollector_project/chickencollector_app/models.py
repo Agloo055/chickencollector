@@ -8,6 +8,16 @@ TIMES = (
 )
 
 # Create your models here.
+class Snack(models.Model):
+    name = models.CharField(max_length=50)
+    amount = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('snacks_detail', kwargs={'pk': self.id})
+
 class Chicken (models.Model):
     name = models.CharField(max_length=100)
     breed = models.CharField(max_length=100)
@@ -32,3 +42,6 @@ class Laying (models.Model):
     
     def __str__(self):
         return f"{self.get_time_display()} on {self.date}"
+    
+    class Meta:
+        ordering = ['-date']
