@@ -23,6 +23,12 @@
         </div>
     </div>
     <div class="col-sm-6">
+        <form action="{% url 'add_laying' chicken.id %}" method="POST">
+            {% csrf_token %}
+
+            {{ laying_form.as_p }}
+            <input type="submit" class="btn btn-primary" value="Add Laying">
+        </form>
         <table class="table table-striped">
             <thead>
                 <tr><th>Date</th><th>Time of Day</th></tr>
@@ -39,5 +45,13 @@
     </div>
 </div>
 
+<script> 
+    $(function () { 
+        $("#datepicker").datepicker({  
+            autoclose: true,  
+            todayHighlight: true, 
+        }).datepicker('update', new Date()); 
+    }); 
+</script> 
 
 {% endblock %}
