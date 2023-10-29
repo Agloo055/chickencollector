@@ -24,10 +24,17 @@ def chickens_index(request):
 def chickens_detail(request, pk):
     chicken = Chicken.objects.get(id=pk)
 
+    snacks = Snack
+
+    id_list = chicken.snacks.all().values_list('id')
+
+    snacks_chicken_doesnt_have = Snack.objects.exclude(id__in=id_list)
+
     laying_form = LayingForm
     return render(request, 'chickens/detail.html', {
         'chicken': chicken,
-        'laying_form': laying_form
+        'laying_form': laying_form,
+        'snacks' : snacks_chicken_doesnt_have
     })
 
 def add_laying(request, pk):
